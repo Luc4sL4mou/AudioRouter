@@ -1,0 +1,81 @@
+<UserControl x:Class="AudioRouter.App.Views.AppRowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Padding="10,8,10,10" CornerRadius="8" Opacity="{Binding RowOpacity}">
+        <Border.Style>
+            <Style TargetType="Border">
+                <!-- O valor padrão fica no estilo (não no elemento) para o gatilho de hover poder sobrescrevê-lo. -->
+                <Setter Property="Background" Value="Transparent" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource SubtleHoverBrush}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="36" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Ícone do app (ou glifo, se o executável não expôs ícone) -->
+            <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Width="24" Height="24"
+                  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,4,0,0">
+                <Image Source="{Binding Icon}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"
+                       Visibility="{Binding HasIcon, Converter={StaticResource BoolToVis}}" />
+                <TextBlock Text="&#xE8D6;" FontFamily="{StaticResource IconFont}" FontSize="20"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7"
+                           Visibility="{Binding NoIcon, Converter={StaticResource BoolToVis}}" />
+            </Grid>
+
+            <!-- Nome + mudo -->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="SemiBold"
+                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                <Button Grid.Column="1" Width="34" Height="30" Style="{StaticResource IconButtonStyle}"
+                        Click="OnMuteClick" ToolTip="Silenciar" AutomationProperties.Name="Silenciar">
+                    <TextBlock Text="{Binding MuteGlyph}" FontFamily="{StaticResource IconFont}" FontSize="16" />
+                </Button>
+            </Grid>
+
+            <!-- Volume -->
+            <Grid Grid.Row="1" Grid.Column="1" Margin="0,2,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="34" />
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5"
+                        IsMoveToPointEnabled="True" VerticalAlignment="Center"
+                        AutomationProperties.Name="Volume"
+                        Value="{Binding Volume, Mode=TwoWay}"
+                        PreviewMouseLeftButtonDown="OnSliderDown"
+                        PreviewMouseLeftButtonUp="OnSliderUp"
+                        LostMouseCapture="OnSliderUp" />
+                <TextBlock Grid.Column="1" Text="{Binding VolumeText}" HorizontalAlignment="Right"
+                           VerticalAlignment="Center" FontFamily="{StaticResource UiFontSmall}" Opacity="0.75" />
+            </Grid>
+
+            <!-- Peak meter, alinhado às pontas do trilho do slider -->
+            <ProgressBar Grid.Row="2" Grid.Column="1" Style="{StaticResource PeakMeterStyle}"
+                         Margin="9,0,43,0" Value="{Binding Peak, Mode=OneWay}" />
+
+            <!-- Dispositivo de saída do app -->
+            <ComboBox Grid.Row="3" Grid.Column="1" Margin="0,10,0,0" HorizontalAlignment="Stretch"
+                      FontFamily="{StaticResource UiFontSmall}" FontSize="12" MinHeight="30"
+                      AutomationProperties.Name="Dispositivo de saída"
+                      ItemsSource="{Binding RoutingOptions}" DisplayMemberPath="Name"
+                      SelectedValuePath="Id" SelectedValue="{Binding RouteDeviceId, Mode=TwoWay}" />
+        </Grid>
+    </Border>
+</UserControl>

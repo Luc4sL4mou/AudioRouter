@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>AudioRouter.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Ícone do .exe (Explorer, atalhos, barra de tarefas). Regenerar com tools\make-icon.ps1. -->
+    <ApplicationIcon>Assets\AudioRouter.ico</ApplicationIcon>
+    <!-- Tema Fluent do WPF ainda é marcado como experimental. -->
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF + WinForms (NotifyIcon/Screen) gera nomes ambíguos; o WinForms é importado só onde precisa. -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Embutido no assembly para o ícone da bandeja e da janela (pack://application:,,,/Assets/AudioRouter.ico). -->
+    <Resource Include="Assets\AudioRouter.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AudioRouter.Core\AudioRouter.Core.csproj" />
+  </ItemGroup>
+
+</Project>

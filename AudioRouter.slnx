@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AudioRouter.App/AudioRouter.App.csproj" />
+    <Project Path="src/AudioRouter.Core/AudioRouter.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AudioRouter.Probe/AudioRouter.Probe.csproj" />
+  </Folder>
+</Solution>

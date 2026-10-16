@@ -1,0 +1,54 @@
+# Saída de build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Saída do `dotnet publish` (o .exe autocontido tem ~72 MB; distribua por GitHub Releases, não pelo repositório)
+publish/
+[Pp]ublish/
+
+# Visual Studio / VS Code / Rider
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.DotSettings.user
+launchSettings.json.user
+
+# Arquivos temporários do WPF e do MSBuild
+*_wpftmp.csproj
+*.tmp
+*.tmp_proj
+*.binlog
+*.msbuildlog
+
+# Testes e cobertura
+TestResults/
+[Tt]est[Rr]esult*/
+coverage*.xml
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+
+# Configuração local do AudioRouter (fica em %AppData%, mas se aparecer por engano na pasta do projeto)
+settings.json.bad
+settings.json.tmp
+
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Anotações locais do Claude Code
+.claude/
