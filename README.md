@@ -10,6 +10,12 @@ As escolhas são lembradas e reaplicadas automaticamente.
 - As rotas são salvas em JSON por nome de executável e reaplicadas ao abrir o app e ao conectar/desconectar dispositivos.
 - Menu de contexto da bandeja (clique direito): **Iniciar com o Windows** e **Sair**.
 
+## Download
+
+Baixe o **`AudioRouter.App.exe`** na página de [Releases](https://github.com/Luc4sL4mou/AudioRouter/releases/latest). É um arquivo único e autocontido (~73 MB), então **não precisa instalar o .NET**. Basta executar.
+
+> O executável não é assinado digitalmente, então o SmartScreen do Windows pode avisar na primeira vez. Clique em **Mais informações > Executar assim mesmo**. O hash SHA-256 de cada versão está nas notas da Release, para você conferir o arquivo.
+
 ## Veja em ação
 
 O flyout em ação: os **peak meters** (barras finas sob cada slider) acompanham o som de cada aplicativo em tempo real, e cada app tem o seu próprio seletor de dispositivo de saída.
