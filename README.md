@@ -10,6 +10,22 @@ As escolhas são lembradas e reaplicadas automaticamente.
 - As rotas são salvas em JSON por nome de executável e reaplicadas ao abrir o app e ao conectar/desconectar dispositivos.
 - Menu de contexto da bandeja (clique direito): **Iniciar com o Windows** e **Sair**.
 
+## Veja em ação
+
+O flyout em ação: os **peak meters** (barras finas sob cada slider) acompanham o som de cada aplicativo em tempo real, e cada app tem o seu próprio seletor de dispositivo de saída.
+
+<p align="center">
+  <img src="docs/demo-flyout.gif" alt="Flyout do AudioRouter com peak meters em tempo real" width="360">
+</p>
+
+O flyout segue o tema do Windows, escuro ou claro:
+
+<p align="center">
+  <img src="docs/screenshot-escuro.png" alt="AudioRouter no tema escuro" width="320">
+  &nbsp;&nbsp;
+  <img src="docs/screenshot-claro.png" alt="AudioRouter no tema claro" width="320">
+</p>
+
 ## Requisitos
 
 | Para | Precisa de |
@@ -157,6 +173,14 @@ dotnet run --project tests\AudioRouter.Probe -- bench              # mede o cust
 ```
 
 `route` e `clear` alteram a configuração do Windows (a mesma do Mixer de volume).
+
+## Desenvolvido com IA
+
+Este projeto foi construído com o apoio de IA, usando o **[Claude Code](https://claude.com/claude-code) dentro do VS Code**.
+
+- **Direção e decisões:** Lucas definiu o que o app deveria fazer, o comportamento esperado, o visual e a identidade, e testou tudo no próprio computador.
+- **Contribuição da IA:** escreveu e revisou o código C#/XAML, a documentação e os scripts, compilou o projeto e conferiu o resultado.
+- **Registro:** os commits feitos com a IA trazem o trailer `Co-Authored-By: Claude`, então a colaboração aparece no histórico do GitHub.
 
 ## Solução de problemas
 
